@@ -1,12 +1,12 @@
 import combo_tools
+from combination_analysis import CombinationAnalysis
 import random
 
 COUSINS = ['Leon', 'Jade', 'Sawyer', 'Mia', 'Anya', 'Sebastian', 'Morgan', 'Briana', 'Bailey', 'Bryelle']
 ADULTS = COUSINS[5:]
 KIDS = COUSINS[:5]
 
-strings = {'story':
-"""
+story = """
 It turns out that Bear, Leon and Jade's dog, is a herding dog. 
 That means that his breed has developed skills to herd animals like sheep.
 Bear is excited to see how good of a herder he is and is going to try out his skills out on the cousins.
@@ -19,8 +19,6 @@ Bear can pick off and herd a certain number of Adults and a certain number of Ki
 Your job is to figure out the odds of a cousin or set of cousins getting herded.
 Not all cousins may participate.
 """
-
-}
 
 def check_guess(guess, isfloat, odds):
     if not isfloat:
@@ -62,15 +60,16 @@ def get_user_options():
     return choice.strip().lower()[0] == 'y'
 
 def game():
-    print(strings['story'])
+    print(story)
     ask_user = get_user_options()
     atargets, num_herded_adults, ktargets, num_herded_kids, who_to_check_odds_for  = get_selections_from_user() if ask_user else get_random()
     display_players(atargets, num_herded_adults, ktargets, num_herded_kids, who_to_check_odds_for)
-    csets = herd(atargets, num_herded_adults, ktargets, num_herded_kids)
+    csets, asets_analysis, ksets_analysis = herd(atargets, num_herded_adults, ktargets, num_herded_kids)
     guess, isfloat = get_number_input(f'\nEnter the odds or probability that {" and ".join(who_to_check_odds_for)} will be herded.\nFor odds enter __ in __ ; for probability enter 0.__ : ')
     odds = get_odds(who_to_check_odds_for, csets)
     wins = check_guess(guess, isfloat, odds)
-    display_results(odds, wins, csets)
+    herded_csets = elems_in_lists(who_to_check_odds_for, csets)
+    display_results(odds, wins, csets, herded_csets)
 
 def get_selections_from_user():
     atargets = get_name_input(f'\nenter the adults that will play, separated by a space: ', ADULTS)
@@ -95,15 +94,29 @@ def display_players(atargets, num_herded_adults, ktargets, num_herded_kids, who_
     print(f'The number of kids who Bear can catch is {num_herded_kids} and the kid targets are {" and ".join(ktargets)}')
     print(f'We are going to check the odds that {" and ".join(who_took_check_odds_for)} get herded by Bear')
 
-def display_results(odds, wins, csets):
-    print('\n' + combo_tools.format_as_set(csets))
+def display_results(odds, wins, csets, herded):
     result = '\nYou did it!!!' if wins else '\nNot quite'
     print(f'{result}\nthe odds were {odds[0]} in {odds[1]}, or a probability of {odds[0]/odds[1]}')
+    print(f'\nsets:\n{combo_tools.format_as_set(csets)}')
+    print(f'herded:\n{combo_tools.format_as_set(herded)}')
 
 def herd(atargets, num_herded_adults, ktargets, num_herded_kids):
     asets = combo_tools.choose(atargets, num_herded_adults)
+    asets_analysis = CombinationAnalysis(asets)
     ksets = combo_tools.choose(ktargets, num_herded_kids)
-    return combo_tools.add_sets(asets, ksets)
+    ksets_analysis = CombinationAnalysis(ksets)
+    return combo_tools.add_sets(asets, ksets), asets_analysis, ksets_analysis
+
+def elems_in_lists(elems, lists: list):
+    return [l for l in lists if set(elems).issubset(set(l))]
 
 if __name__ == '__main__':
-    game()
+    #game()
+    c4_3 = combo_tools.choose(KIDS[:4], 3)
+    print(combo_tools.format_as_set(c4_3))
+    c3_2 = combo_tools.choose(KIDS[:3], 2)
+    print(combo_tools.format_as_set(c3_2))
+    c3_3 = combo_tools.choose(KIDS[:3], 3)
+    print(combo_tools.format_as_set(c3_3))
+    c3_2and3 = combo_tools.add_sets(c3_2, c3_3)
+    print(combo_tools.format_as_set(c3_2and3))

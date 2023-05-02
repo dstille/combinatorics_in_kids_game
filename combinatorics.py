@@ -1,6 +1,7 @@
 class Combinatorics:
     def __init__(self, sets):
         self.sets = sets
+        self.as_iter = iter(self.sets)
 
     def add_sets(self, set1, set2):
         return self.eliminate_duplicates([(*s1, *s2) for s2 in set2 for s1 in set1])
@@ -22,10 +23,6 @@ class Combinatorics:
             event_ct = self.counts(event, poss_outcomes)
             size_outcomes = len(poss_outcomes)
             return event_ct, size_outcomes
-    
-    def save(self, fname, contents):
-        with open(fname, 'w') as f:
-            f.write(contents)
 
     def __str__(self) -> str:
         return Combinatorics.format_as_sets(self.sets)
@@ -65,6 +62,12 @@ class Permutations(Combinatorics):
 
     def eliminate_duplicates(self, sets_in):
             return [sorted(s) for s in frozenset(frozenset(sorted(set)) for set in sets_in)]
+    
+
+def save(self, fname, contents):
+        with open(fname, 'w') as f:
+            f.write(contents)
+
 
         
 COUSINS = ['Leon', 'Jade', 'Sawyer', 'Mia', 'Anya', 'Sebastian', 'Morgan', 'Briana', 'Bailey', 'Bryelle']

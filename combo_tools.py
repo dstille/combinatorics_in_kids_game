@@ -48,15 +48,5 @@ def odds(event, poss_outcomes):
 def eliminate_duplicates(sets_in):
     return [sorted(s) for s in frozenset(frozenset(sorted(set)) for set in sets_in)]
 
-        
-COUSINS = ['Leon', 'Jade', 'Sawyer', 'Mia', 'Anya', 'Sebastian', 'Morgan', 'Briana', 'Bailey', 'Bryelle']
-ADULTS = COUSINS[5:]
-KIDS = COUSINS[:5]
 
-psets = permute(ADULTS, 3)
-print(format_as_set(psets))
-print(len(psets))
-csets = eliminate_duplicates(psets)
-print(format_as_set(csets))
-print(len(csets))
 

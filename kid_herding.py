@@ -1,5 +1,4 @@
 import combo_tools
-from combination_analysis import CombinationAnalysis
 import random
 import strings as XSTR
 
@@ -54,7 +53,7 @@ def game():
     ask_user = get_user_options()
     atargets, num_herded_adults, ktargets, num_herded_kids, who_to_check_odds_for  = get_selections_from_user() if ask_user else get_random()
     display_players(atargets, num_herded_adults, ktargets, num_herded_kids, who_to_check_odds_for)
-    csets, asets_analysis, ksets_analysis = herd(atargets, num_herded_adults, ktargets, num_herded_kids)
+    csets = herd(atargets, num_herded_adults, ktargets, num_herded_kids)
     guess, isfloat = get_number_input(f'\n{XSTR.PODDS1} {XSTR.AND.join(who_to_check_odds_for)} {XSTR.PODDS2}')
     odds = get_odds(who_to_check_odds_for, csets)
     wins = check_guess(guess, isfloat, odds)
@@ -71,13 +70,13 @@ def get_selections_from_user():
     return atargets, num_herd_adults, ktargets, num_herd_kids, who_to_check_the_odds_for
 
 def get_random():
-    num_atargets = random.randint(1, len(ADULTS))
+    num_atargets = random.randint(1, len(ADULTS)-1)
     atargets = get_random_selection(ADULTS, num_atargets)
     num_herd_adults = random.randint(1, num_atargets)
-    num_ktargets = random.randint(1, len(KIDS))
+    num_ktargets = random.randint(1, len(KIDS)-1)
     ktargets = get_random_selection(KIDS, num_ktargets)
     num_herd_kids = random.randint(1, num_ktargets)
-    who_to_check_the_odds_for = get_random_selection(atargets + ktargets, random.randint(1, len(atargets + ktargets)))
+    who_to_check_the_odds_for = get_random_selection(atargets + ktargets, random.randint(1, len(atargets + ktargets)-1))
     return atargets, num_herd_adults, ktargets, num_herd_kids, who_to_check_the_odds_for
 
 def display_players(atargets, num_herded_adults, ktargets, num_herded_kids, who_took_check_odds_for):
@@ -95,10 +94,8 @@ def display_results(odds, wins, csets, herded):
 
 def herd(atargets, num_herded_adults, ktargets, num_herded_kids):
     asets = combo_tools.choose(atargets, num_herded_adults)
-    asets_analysis = CombinationAnalysis(asets)
     ksets = combo_tools.choose(ktargets, num_herded_kids)
-    ksets_analysis = CombinationAnalysis(ksets)
-    return combo_tools.add_sets(asets, ksets), asets_analysis, ksets_analysis
+    return combo_tools.add_sets(asets, ksets)
 
 def elems_in_lists(elems, lists: list):
     return [l for l in lists if set(elems).issubset(set(l))]

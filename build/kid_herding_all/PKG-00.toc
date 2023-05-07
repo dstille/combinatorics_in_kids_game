@@ -1,0 +1,105 @@
+('C:\\Users\\Dan '
+ 'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\build\\kid_herding_all\\kid_herding_all.pkg',
+ {'BINARY': True,
+  'DATA': True,
+  'EXECUTABLE': True,
+  'EXTENSION': True,
+  'PYMODULE': True,
+  'PYSOURCE': True,
+  'PYZ': False,
+  'SPLASH': True},
+ [('PYZ-00.pyz',
+   'C:\\Users\\Dan '
+   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\build\\kid_herding_all\\PYZ-00.pyz',
+   'PYZ'),
+  ('struct',
+   'C:\\Users\\Dan '
+   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\build\\kid_herding_all\\localpycs\\struct.pyc',
+   'PYMODULE'),
+  ('pyimod01_archive',
+   'C:\\Users\\Dan '
+   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\build\\kid_herding_all\\localpycs\\pyimod01_archive.pyc',
+   'PYMODULE'),
+  ('pyimod02_importers',
+   'C:\\Users\\Dan '
+   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\build\\kid_herding_all\\localpycs\\pyimod02_importers.pyc',
+   'PYMODULE'),
+  ('pyimod03_ctypes',
+   'C:\\Users\\Dan '
+   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\build\\kid_herding_all\\localpycs\\pyimod03_ctypes.pyc',
+   'PYMODULE'),
+  ('pyimod04_pywin32',
+   'C:\\Users\\Dan '
+   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\build\\kid_herding_all\\localpycs\\pyimod04_pywin32.pyc',
+   'PYMODULE'),
+  ('pyiboot01_bootstrap',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\loader\\pyiboot01_bootstrap.py',
+   'PYSOURCE'),
+  ('pyi_rth_inspect',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
+   'PYSOURCE'),
+  ('kid_herding_all',
+   'C:\\Users\\Dan '
+   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\kid_herding_all.py',
+   'PYSOURCE'),
+  ('python310.dll',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\python310.dll',
+   'BINARY'),
+  ('VCRUNTIME140.dll',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\VCRUNTIME140.dll',
+   'BINARY'),
+  ('select.pyd',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\select.pyd',
+   'EXTENSION'),
+  ('_socket.pyd',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\_socket.pyd',
+   'EXTENSION'),
+  ('_lzma.pyd',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\_lzma.pyd',
+   'EXTENSION'),
+  ('_bz2.pyd',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\_bz2.pyd',
+   'EXTENSION'),
+  ('_ssl.pyd',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\_ssl.pyd',
+   'EXTENSION'),
+  ('_hashlib.pyd',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\_hashlib.pyd',
+   'EXTENSION'),
+  ('unicodedata.pyd',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\unicodedata.pyd',
+   'EXTENSION'),
+  ('_decimal.pyd',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\_decimal.pyd',
+   'EXTENSION'),
+  ('libcrypto-1_1.dll',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\libcrypto-1_1.dll',
+   'BINARY'),
+  ('libssl-1_1.dll',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\libssl-1_1.dll',
+   'BINARY'),
+  ('base_library.zip',
+   'C:\\Users\\Dan '
+   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\build\\kid_herding_all\\base_library.zip',
+   'DATA')],
+ False,
+ False,
+ False,
+ [],
+ None,
+ None,
+ None)

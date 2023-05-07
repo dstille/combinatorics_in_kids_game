@@ -13,8 +13,8 @@ def check_guess(guess, isfloat, odds):
             print(XSTR.PERFECT)
             return True
         else:
-            guess = guess[0] / guess[1]
-    return close_enough(guess, odds[0] / odds[1])
+            guess_prob = 0.0 if guess[0] == 0 else guess[0] / guess[1] 
+    return close_enough(guess_prob, odds[0] / odds[1])
 
 def close_enough(val1, val2):
     return abs(val1 - val2) <= 0.20
@@ -48,8 +48,6 @@ def get_user_options():
     return choice.strip().lower()[0] == XSTR.AFFIRM[0]
 
 def game():
-    print(BORDER)
-    print(XSTR.STORY)
     ask_user = get_user_options()
     atargets, num_herded_adults, ktargets, num_herded_kids, who_to_check_odds_for  = get_selections_from_user() if ask_user else get_random()
     display_players(atargets, num_herded_adults, ktargets, num_herded_kids, who_to_check_odds_for)
@@ -59,6 +57,11 @@ def game():
     wins = check_guess(guess, isfloat, odds)
     herded_csets = elems_in_lists(who_to_check_odds_for, csets)
     display_results(odds, wins, csets, herded_csets)
+    display_math(atargets, num_herded_adults, ktargets, num_herded_kids, who_to_check_odds_for)
+    print(BORDER)
+    if input(XSTR.CONTINUE) == XSTR.AFFIRM[0]:
+        game()
+
 
 def get_selections_from_user():
     print(BORDER)
@@ -92,6 +95,11 @@ def display_results(odds, wins, csets, herded):
     print(f'\n{XSTR.SETS}:\n{combo_tools.format_as_set(csets)}')
     print(f'{XSTR.HERDED}:\n{combo_tools.format_as_set(herded)}')
 
+def display_math(atargets, num_herded_adults, ktargets, num_herded_kids, who_to_check_odds_for):
+    aprob = combo_tools.prob_display(len(atargets), num_herded_adults, num_herded_adults, sum(cousin in atargets for cousin in who_to_check_odds_for))
+    kprob = combo_tools.prob_display(len(ktargets), num_herded_kids, num_herded_kids, sum(cousin in ktargets for cousin in who_to_check_odds_for))
+    print(f'{aprob} * {kprob}')
+
 def herd(atargets, num_herded_adults, ktargets, num_herded_kids):
     asets = combo_tools.choose(atargets, num_herded_adults)
     ksets = combo_tools.choose(ktargets, num_herded_kids)
@@ -101,6 +109,8 @@ def elems_in_lists(elems, lists: list):
     return [l for l in lists if set(elems).issubset(set(l))]
 
 if __name__ == '__main__':
+    print(BORDER)
+    print(XSTR.STORY)
     game()
     print(BORDER)
     

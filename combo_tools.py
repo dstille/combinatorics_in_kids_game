@@ -48,5 +48,27 @@ def odds(event, poss_outcomes):
 def eliminate_duplicates(sets_in):
     return [sorted(s) for s in frozenset(frozenset(sorted(set)) for set in sets_in)]
 
+def format_combos(n, k):
+    return f'C({n},{k})'
+
+def format_prob(n1, k1, n2, k2):
+    return f'{format_combos(n1, k1)} / {format_combos(n2, k2)}'
+
+def factorial(x):
+    return x * factorial(x-1) if x>1 else 1
+
+def C(n, k):
+    return factorial(n) // (factorial(n-k)*factorial(k))
+
+def p(event_ct, size_outcomes):
+    return event_ct/size_outcomes
+
+def prob_display(n1, k1, n2, k2):
+    event_ct = C(n1, k1)
+    size_outcomes = C(n2, k2)
+    return f'{format_prob(n1, k1, n2, k2)}  =  {event_ct} / {size_outcomes}  =  {p(event_ct, size_outcomes)}'
+
+print(prob_display(0,0,5,2))
+
 
 

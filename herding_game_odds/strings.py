@@ -15,7 +15,7 @@ Not all Cousins may participate.
 AND = ' and '
 NUM_ERROR = 'Not a number. Please try again'
 STR_ERROR = 'Error processing input! Please try again'
-PERFECT = 'on the nose!'
+PERFECT = 'ON THE NOSE!!!'
 IN = 'in'
 AFFIRM = 'yes'
 PODDS1 = 'Enter the odds or probability that'

@@ -43,13 +43,13 @@ def get_random_selection(cousins, num_cousins):
     random.shuffle(copy_cousins)  
     return copy_cousins[:num_cousins]
 
-def get_user_options():
+def get_user_option(prompt):
     print(BORDER)
-    choice = input(XSTR.PUSER_OPTIONS)      
+    choice = input(prompt)      
     return choice.strip().lower()[0] == XSTR.AFFIRM[0]
 
 def game():
-    ask_user = get_user_options()
+    ask_user = False #get_user_option(XSTR.PUSER_OPTIONS)
     aplayers, kplayers, who_to_check_odds_for  = set_up_players(*get_selections_from_user() if ask_user else get_random())
     display_players(aplayers, kplayers, who_to_check_odds_for)
     csets, asets, ksets = herd(aplayers, kplayers)
@@ -57,8 +57,7 @@ def game():
     check_guess(guess, csets, who_to_check_odds_for)
     display_math(asets, ksets, aplayers, kplayers)
     print(BORDER)
-    if input(XSTR.CONTINUE) == XSTR.AFFIRM[0]:
-        game()
+    game() if get_user_option(XSTR.CONTINUE) else None
 
 def set_up_players(atargets, num_herded_adults, ktargets, num_herded_kids, who_to_check_odds_for):
     aplayers = Players(atargets, num_herded_adults, who_to_check_odds_for)

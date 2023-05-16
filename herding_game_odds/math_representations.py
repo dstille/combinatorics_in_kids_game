@@ -1,4 +1,3 @@
-import combo_tools as ct
 from combinatorics import ComboValue as CV
 
 def prob_display(herded, players):

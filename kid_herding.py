@@ -1,32 +1,45 @@
 import combo_tools
+import math_representations
 import random
 import strings as XSTR
+from combinatorics import Combinations, Odds, Prob, Combinatorics
+
+class Players:
+    def __init__(self, players, num_herded, queried) -> None:
+        self.players = players
+        self.num_herded = num_herded
+        self.players_in_query, self.num_in_query = self.get_players_queried(queried)
+
+    def get_players_queried(self, queried):
+        return [p for p in self.players if p in queried], sum([p in queried for p in self.players])    
 
 COUSINS = ['Leon', 'Jade', 'Sawyer', 'Mia', 'Anya', 'Sebastian', 'Morgan', 'Briana', 'Bailey', 'Bryelle']
 ADULTS = COUSINS[5:]
 KIDS = COUSINS[:5]
 BORDER = ''.join(['=' for __ in range(120)])
 
-def check_guess(guess, isfloat, odds):
-    if not isfloat:
-        if guess == odds:
-            print(XSTR.PERFECT)
-            return True
-        else:
-            guess_prob = 0.0 if guess[0] == 0 else guess[0] / guess[1] 
-    return close_enough(guess_prob, odds[0] / odds[1])
+def check_guess(guess, csets, queried):
+    odds = Odds(queried, csets.sets)
+    prob = Prob(odds.counts, odds.sizesample)
+    if odds == guess or prob == guess:
+        print(XSTR.PERFECT)
+        return True
+    guess_prob = guess if type(guess) == float else 0.0 if guess[0] == 0 else guess[0] / guess[1] 
+    wins =  close_enough(guess_prob, prob.value)
+    queried_sets = csets.elems_in_sets(queried)
+    display_results(odds, prob, wins, csets, queried_sets)
 
 def close_enough(val1, val2):
     return abs(val1 - val2) <= 0.20
 
 def get_odds(subset, superset):
-    return combo_tools.odds(subset, superset)
+    return Odds(subset, superset)
 
 def get_number_input(prompt):
     while True:
         try:
             raw = input(prompt)
-            return (float(raw), True) if '.' in raw else ([int(val.strip()) for val in raw.split(XSTR.IN)], False)
+            return float(raw) if '.' in raw else tuple(int(val.strip()) for val in raw.split(XSTR.IN))
         except:
             print(XSTR.NUM_ERROR)
 
@@ -49,18 +62,20 @@ def get_user_options():
 
 def game():
     ask_user = get_user_options()
-    atargets, num_herded_adults, ktargets, num_herded_kids, who_to_check_odds_for  = get_selections_from_user() if ask_user else get_random()
-    display_players(atargets, num_herded_adults, ktargets, num_herded_kids, who_to_check_odds_for)
-    csets = herd(atargets, num_herded_adults, ktargets, num_herded_kids)
-    guess, isfloat = get_number_input(f'\n{XSTR.PODDS1} {XSTR.AND.join(who_to_check_odds_for)} {XSTR.PODDS2}')
-    odds = get_odds(who_to_check_odds_for, csets)
-    wins = check_guess(guess, isfloat, odds)
-    herded_csets = elems_in_lists(who_to_check_odds_for, csets)
-    display_results(odds, wins, csets, herded_csets)
-    display_math(atargets, num_herded_adults, ktargets, num_herded_kids, who_to_check_odds_for)
+    aplayers, kplayers, who_to_check_odds_for  = set_up_players(*get_selections_from_user() if ask_user else get_random())
+    display_players(aplayers, kplayers, who_to_check_odds_for)
+    csets, asets, ksets = herd(aplayers, kplayers)
+    guess = get_number_input(f'\n{XSTR.PODDS1} {XSTR.AND.join(who_to_check_odds_for)} {XSTR.PODDS2}')
+    check_guess(guess, csets, who_to_check_odds_for)
+    display_math(asets, ksets, aplayers, kplayers)
     print(BORDER)
     if input(XSTR.CONTINUE) == XSTR.AFFIRM[0]:
         game()
+
+def set_up_players(atargets, num_herded_adults, ktargets, num_herded_kids, who_to_check_odds_for):
+    aplayers = Players(atargets, num_herded_adults, who_to_check_odds_for)
+    kplayers = Players(ktargets, num_herded_kids, who_to_check_odds_for)
+    return aplayers, kplayers, who_to_check_odds_for
 
 
 def get_selections_from_user():
@@ -79,31 +94,31 @@ def get_random():
     num_ktargets = random.randint(1, len(KIDS)-1)
     ktargets = get_random_selection(KIDS, num_ktargets)
     num_herd_kids = random.randint(1, num_ktargets)
-    who_to_check_the_odds_for = get_random_selection(atargets + ktargets, random.randint(1, len(atargets + ktargets)-1))
+    who_to_check_the_odds_for = get_random_selection(atargets + ktargets, random.randint(1, num_herd_adults+num_herd_kids-1))
     return atargets, num_herd_adults, ktargets, num_herd_kids, who_to_check_the_odds_for
 
-def display_players(atargets, num_herded_adults, ktargets, num_herded_kids, who_took_check_odds_for):
+def display_players(aplayers, kplayers, who_to_check_odds_for):
     print(BORDER)
-    print(f'\n{XSTR.DADULTS_CAN_HERD} {num_herded_adults} {XSTR.DADULTS_TO_PLAY}:\n {XSTR.AND.join(atargets)}')
-    print(f'{XSTR.DKIDS_CAN_HERD} {num_herded_kids} {XSTR.DKIDS_TO_PLAY}:\n {XSTR.AND.join(ktargets)}')
-    print(f'{XSTR.DCHECK_ODDS1} {XSTR.AND.join(who_took_check_odds_for)} {XSTR.DCHECK_ODDS2}')
+    print(f'\n{XSTR.DADULTS_CAN_HERD} {aplayers.num_herded} {XSTR.DADULTS_TO_PLAY}:\n {XSTR.AND.join(aplayers.players)}')
+    print(f'{XSTR.DKIDS_CAN_HERD} {kplayers.num_herded} {XSTR.DKIDS_TO_PLAY}:\n {XSTR.AND.join(kplayers.players)}')
+    print(f'{XSTR.DCHECK_ODDS1} {XSTR.AND.join(who_to_check_odds_for)} {XSTR.DCHECK_ODDS2}')
 
-def display_results(odds, wins, csets, herded):
+def display_results(odds, prob, wins, csets, queried_sets):
     print(BORDER)
     result = f'\n{XSTR.CONGRATS}' if wins else f'\n{XSTR.TOO_BAD}'
-    print(f'{result}\n{XSTR.RESULTS_ODDS} {odds[0]} {XSTR.IN} {odds[1]}, {XSTR.RESULTS_PROB} {odds[0]/odds[1]}')
-    print(f'\n{XSTR.SETS}:\n{combo_tools.format_as_set(csets)}')
-    print(f'{XSTR.HERDED}:\n{combo_tools.format_as_set(herded)}')
+    print(f'{result}\n{XSTR.RESULTS_ODDS} {odds}, {XSTR.RESULTS_PROB} {prob}')
+    print(f'\n{XSTR.SETS}:\n{csets}')
+    print(f'{XSTR.HERDED}:\n{queried_sets}')
 
-def display_math(atargets, num_herded_adults, ktargets, num_herded_kids, who_to_check_odds_for):
-    aprob = combo_tools.prob_display(len(atargets), num_herded_adults, num_herded_adults, sum(cousin in atargets for cousin in who_to_check_odds_for))
-    kprob = combo_tools.prob_display(len(ktargets), num_herded_kids, num_herded_kids, sum(cousin in ktargets for cousin in who_to_check_odds_for))
-    print(f'{aprob} * {kprob}')
+def display_math(asets, ksets, aplayers, kplayers):
+    print(math_representations.display_math(asets, ksets, aplayers, kplayers))
 
-def herd(atargets, num_herded_adults, ktargets, num_herded_kids):
-    asets = combo_tools.choose(atargets, num_herded_adults)
-    ksets = combo_tools.choose(ktargets, num_herded_kids)
-    return combo_tools.add_sets(asets, ksets)
+def herd(aplayers, kplayers):
+    acombos = Combinations(aplayers.players, aplayers.num_herded)
+    kcombos = Combinations(kplayers.players, kplayers.num_herded)
+    csets = Combinations.add_sets(acombos.sets, kcombos.sets)
+    ccombos = Combinatorics(csets, aplayers.players+kplayers.players)
+    return ccombos, acombos, kcombos
 
 def elems_in_lists(elems, lists: list):
     return [l for l in lists if set(elems).issubset(set(l))]

@@ -23,16 +23,4 @@ class StrSets:
 
     def combine(sets1, set2):
         return sorted(list(set(((list(set(sorted(s1 + [elem])) for s1 in sets1 for elem in set2 if elem not in sorted(s1)))))))
-
-
-kids = ['leon', 'jade', 'sawyer', 'anya', 'mia']
-sets1 = combo_tools.choose(kids, 3)
-#strsets1 = StrSets(sets1)
-#strsets1.border()
-#strsets2 = StrSets([kids])
-#strsets2.border()
-#StrSets.side_by_side(strsets1.bordered, strsets2.bordered)
-sets3 = StrSets.combine(sets1, kids)
-print(len(sets3))
-print(StrSets(sets3))
             

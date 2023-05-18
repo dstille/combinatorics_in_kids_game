@@ -19,7 +19,7 @@ PERFECT = 'ON THE NOSE!!!'
 IN = 'in'
 AFFIRM = 'yes'
 PODDS1 = 'Enter the odds or probability that'
-PODDS2 = 'will be herded.\nFor odds enter __ in __ ; for probability enter 0.__ : '
+PODDS2 = 'will be herded.\nFor odds enter __ in __ ; for probability enter _.__ : '
 
 PUSER_OPTIONS = 'would you like to decide how many cousins to try herding \nand which cousins to finds the odds that they actually got herded, (y/n)? '
 PADULTS_TO_PLAY = 'enter the adults that will play, separated by a space: '

@@ -2,6 +2,7 @@ from players import Players, COUSINS, ADULTS, KIDS
 import math_representations
 import random
 import strings as XSTR
+import displays
 from combinatorics import Combinations, Odds, Prob, Combinatorics
 
 BORDER = ''.join(['=' for __ in range(120)])
@@ -10,15 +11,15 @@ def check_guess(guess, csets, queried):
     odds = Odds(queried, csets.sets)
     prob = Prob(odds.counts, odds.sizesample)
     if odds == guess or prob == guess:
-        print(XSTR.PERFECT)
-        return True
-    guess_prob = guess if type(guess) == float else 0.0 if guess[0] == 0 else guess[0] / guess[1] 
-    wins =  close_enough(guess_prob, prob.value)
+        msg = XSTR.PERFECT
+    else:
+        guess_prob = guess if type(guess) == float else 0.0 if guess[0] == 0 else Prob(*guess) 
+        msg = f'\n{XSTR.CONGRATS}' if close_enough(prob, guess_prob) else f'\n{XSTR.TOO_BAD}'
     queried_sets = csets.elems_in_sets(queried)
-    display_results(odds, prob, wins, csets, queried_sets)
+    return odds, prob, msg, csets, queried_sets
 
 def close_enough(val1, val2):
-    return abs(val1 - val2) <= 0.20
+    return abs(val1 - val2) <= 0.12
 
 def get_odds(subset, superset):
     return Odds(subset, superset)
@@ -51,23 +52,30 @@ def get_user_option(prompt):
 def game():
     ask_user = False #get_user_option(XSTR.PUSER_OPTIONS)
     aplayers, kplayers, who_to_check_odds_for  = set_up_players(*get_selections_from_user() if ask_user else get_random())
-    display_players(aplayers, kplayers, who_to_check_odds_for)
+    asets, ksets = play(aplayers, kplayers, who_to_check_odds_for)
+    displays.display_math(asets, ksets, aplayers, kplayers)
+    game() if get_user_option(XSTR.CONTINUE) else None
+
+def play(aplayers, kplayers, who_to_check_odds_for):
+    displays.display_players(aplayers, kplayers, who_to_check_odds_for)
     csets, asets, ksets = herd(aplayers, kplayers)
     guess = get_number_input(f'\n{XSTR.PODDS1} {XSTR.AND.join(who_to_check_odds_for)} {XSTR.PODDS2}')
-    check_guess(guess, csets, who_to_check_odds_for)
-    display_math(asets, ksets, aplayers, kplayers)
-    print(BORDER)
-    game() if get_user_option(XSTR.CONTINUE) else None
+    results = check_guess(guess, csets, who_to_check_odds_for)
+    aqueried_sets = get_subset_matches(asets, aplayers.queried_players)
+    kqueried_sets = get_subset_matches(ksets, kplayers.queried_players)
+    displays.display_results(*results, asets, ksets, aqueried_sets, kqueried_sets, aplayers, kplayers)
+    return asets, ksets
+
+def get_subset_matches(sets, subset):
+    return sets.elems_in_sets(subset)
 
 def set_up_players(atargets, num_herded_adults, ktargets, num_herded_kids, who_to_check_odds_for):
     aplayers = Players(atargets, num_herded_adults, who_to_check_odds_for)
     kplayers = Players(ktargets, num_herded_kids, who_to_check_odds_for)
     return aplayers, kplayers, who_to_check_odds_for
 
-
 def get_selections_from_user():
-    print(BORDER)
-    atargets = get_name_input('\n' + XSTR.PADULTS_TO_PLAY, ADULTS)
+    atargets = get_name_input(BORDER + '\n' + XSTR.PADULTS_TO_PLAY, ADULTS)
     num_herd_adults = get_number_input(XSTR.PADULTS_CAN_HERD)[0][0]
     ktargets = get_name_input(XSTR.DKIDS_TO_PLAY, KIDS)
     num_herd_kids =  get_number_input(XSTR.PKIDS_CAN_HERD)[0][0]
@@ -84,22 +92,6 @@ def get_random():
     who_to_check_the_odds_for = get_random_selection(atargets + ktargets, random.randint(1, num_herd_adults+num_herd_kids-1))
     return atargets, num_herd_adults, ktargets, num_herd_kids, who_to_check_the_odds_for
 
-def display_players(aplayers, kplayers, who_to_check_odds_for):
-    print(BORDER)
-    print(f'\n{XSTR.DADULTS_CAN_HERD} {aplayers.num_herded} {XSTR.DADULTS_TO_PLAY}:\n      {XSTR.AND.join(aplayers.players)}')
-    print(f'{XSTR.DKIDS_CAN_HERD} {kplayers.num_herded} {XSTR.DKIDS_TO_PLAY}:\n      {XSTR.AND.join(kplayers.players)}')
-    print(f'{XSTR.DCHECK_ODDS1} {XSTR.AND.join(who_to_check_odds_for)} {XSTR.DCHECK_ODDS2}')
-
-def display_results(odds, prob, wins, csets, queried_sets):
-    print(BORDER)
-    result = f'\n{XSTR.CONGRATS}' if wins else f'\n{XSTR.TOO_BAD}'
-    print(f'{result}\n{XSTR.RESULTS_ODDS} {odds}, {XSTR.RESULTS_PROB} {prob}')
-    print(f'\n{XSTR.SETS}:\n{csets}')
-    print(f'{XSTR.HERDED}:\n{queried_sets}')
-
-def display_math(asets, ksets, aplayers, kplayers):
-    print(math_representations.display_math(asets, ksets, aplayers, kplayers))
-
 def herd(aplayers, kplayers):
     acombos = Combinations(aplayers.players, aplayers.num_herded)
     kcombos = Combinations(kplayers.players, kplayers.num_herded)
@@ -107,12 +99,7 @@ def herd(aplayers, kplayers):
     ccombos = Combinatorics(csets, aplayers.players+kplayers.players)
     return ccombos, acombos, kcombos
 
-#def elems_in_lists(elems, lists: list):
- #   return [l for l in lists if set(elems).issubset(set(l))]
-
 if __name__ == '__main__':
-    print(BORDER)
-    print(XSTR.STORY)
+    displays.startup()
     game()
-    print(BORDER)
     

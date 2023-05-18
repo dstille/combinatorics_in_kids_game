@@ -1,9 +1,9 @@
 from combinatorics import ComboValue as CV
 
 def prob_display(herded, players):
-    queriedsize = players.num_in_query
+    queriedsize = players.num_queried
     qcombo_value = CV(herded.combo_value.n - queriedsize, herded.combo_value.k - queriedsize)
-    return f'{qcombo_value}/{herded.combo_value}', f'{qcombo_value.value}/{herded.combo_value.value}', f'{qcombo_value.value/herded.combo_value.value:.2f}', qcombo_value.value, herded.combo_value.value
+    return f'{qcombo_value}/{herded.combo_value}', f'{qcombo_value.value}/{herded.combo_value.value}', f'{qcombo_value/herded.combo_value:.2f}', qcombo_value.value, herded.combo_value.value
 
 def display_math(acombos, kcombos, aplayers, kplayers):
     a1, a2, a3, a4, a5 = prob_display(acombos, aplayers)

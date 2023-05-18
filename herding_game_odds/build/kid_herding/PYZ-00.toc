@@ -1,5 +1,5 @@
 ('C:\\Users\\Dan '
- 'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\build\\kid_herding\\PYZ-00.pyz',
+ 'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\build\\kid_herding\\PYZ-00.pyz',
  [('_compat_pickle',
    'C:\\Users\\Dan '
    'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_compat_pickle.py',
@@ -50,7 +50,7 @@
    'PYMODULE'),
   ('combinatorics',
    'C:\\Users\\Dan '
-   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\combinatorics.py',
+   'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\combinatorics.py',
    'PYMODULE'),
   ('contextlib',
    'C:\\Users\\Dan '
@@ -83,6 +83,10 @@
   ('dis',
    'C:\\Users\\Dan '
    'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\dis.py',
+   'PYMODULE'),
+  ('displays',
+   'C:\\Users\\Dan '
+   'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\displays.py',
    'PYMODULE'),
   ('email',
    'C:\\Users\\Dan '
@@ -276,10 +280,6 @@
    'C:\\Users\\Dan '
    'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\lzma.py',
    'PYMODULE'),
-  ('math_representations',
-   'C:\\Users\\Dan '
-   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\math_representations.py',
-   'PYMODULE'),
   ('mimetypes',
    'C:\\Users\\Dan '
    'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\mimetypes.py',
@@ -310,7 +310,7 @@
    'PYMODULE'),
   ('players',
    'C:\\Users\\Dan '
-   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\players.py',
+   'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\players.py',
    'PYMODULE'),
   ('pprint',
    'C:\\Users\\Dan '
@@ -366,7 +366,7 @@
    'PYMODULE'),
   ('strings',
    'C:\\Users\\Dan '
-   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\strings.py',
+   'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\strings.py',
    'PYMODULE'),
   ('subprocess',
    'C:\\Users\\Dan '

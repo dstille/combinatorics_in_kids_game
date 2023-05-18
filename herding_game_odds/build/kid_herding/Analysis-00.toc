@@ -1,7 +1,7 @@
 (['C:\\Users\\Dan '
-  'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\kid_herding.py'],
+  'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\kid_herding.py'],
  ['C:\\Users\\Dan '
-  'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds'],
+  'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds'],
  ['codecs'],
  ['C:\\Users\\Dan '
   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\numpy\\_pyinstaller',
@@ -30,7 +30,7 @@
    'PYSOURCE'),
   ('kid_herding',
    'C:\\Users\\Dan '
-   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\kid_herding.py',
+   'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\kid_herding.py',
    'PYSOURCE')],
  [('inspect',
    'C:\\Users\\Dan '
@@ -304,17 +304,33 @@
    'C:\\Users\\Dan '
    'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ast.py',
    'PYMODULE'),
+  ('_py_abc',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_py_abc.py',
+   'PYMODULE'),
   ('stringprep',
    'C:\\Users\\Dan '
    'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\stringprep.py',
    'PYMODULE'),
-  ('subprocess',
+  ('tracemalloc',
    'C:\\Users\\Dan '
-   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\subprocess.py',
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\tracemalloc.py',
    'PYMODULE'),
-  ('signal',
+  ('pickle',
    'C:\\Users\\Dan '
-   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\signal.py',
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\pickle.py',
+   'PYMODULE'),
+  ('pprint',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\pprint.py',
+   'PYMODULE'),
+  ('dataclasses',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\dataclasses.py',
+   'PYMODULE'),
+  ('_compat_pickle',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_compat_pickle.py',
    'PYMODULE'),
   ('tempfile',
    'C:\\Users\\Dan '
@@ -356,22 +372,6 @@
    'C:\\Users\\Dan '
    'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\logging\\__init__.py',
    'PYMODULE'),
-  ('pickle',
-   'C:\\Users\\Dan '
-   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\pickle.py',
-   'PYMODULE'),
-  ('pprint',
-   'C:\\Users\\Dan '
-   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\pprint.py',
-   'PYMODULE'),
-  ('dataclasses',
-   'C:\\Users\\Dan '
-   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\dataclasses.py',
-   'PYMODULE'),
-  ('_compat_pickle',
-   'C:\\Users\\Dan '
-   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_compat_pickle.py',
-   'PYMODULE'),
   ('ssl',
    'C:\\Users\\Dan '
    'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ssl.py',
@@ -388,21 +388,25 @@
    'C:\\Users\\Dan '
    'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\bisect.py',
    'PYMODULE'),
-  ('tracemalloc',
+  ('subprocess',
    'C:\\Users\\Dan '
-   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\tracemalloc.py',
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\subprocess.py',
    'PYMODULE'),
-  ('_py_abc',
+  ('signal',
    'C:\\Users\\Dan '
-   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_py_abc.py',
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\signal.py',
    'PYMODULE'),
   ('combinatorics',
    'C:\\Users\\Dan '
-   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\combinatorics.py',
+   'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\combinatorics.py',
+   'PYMODULE'),
+  ('displays',
+   'C:\\Users\\Dan '
+   'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\displays.py',
    'PYMODULE'),
   ('strings',
    'C:\\Users\\Dan '
-   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\strings.py',
+   'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\strings.py',
    'PYMODULE'),
   ('random',
    'C:\\Users\\Dan '
@@ -432,13 +436,9 @@
    'C:\\Users\\Dan '
    'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\numbers.py',
    'PYMODULE'),
-  ('math_representations',
-   'C:\\Users\\Dan '
-   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\math_representations.py',
-   'PYMODULE'),
   ('players',
    'C:\\Users\\Dan '
-   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\players.py',
+   'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\players.py',
    'PYMODULE')],
  [('python310.dll',
    'C:\\Users\\Dan '
@@ -480,18 +480,18 @@
    'C:\\Users\\Dan '
    'Castille\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\_decimal.pyd',
    'EXTENSION'),
-  ('libssl-1_1.dll',
-   'C:\\Users\\Dan '
-   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\libssl-1_1.dll',
-   'BINARY'),
   ('libcrypto-1_1.dll',
    'C:\\Users\\Dan '
    'Castille\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\libcrypto-1_1.dll',
+   'BINARY'),
+  ('libssl-1_1.dll',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\libssl-1_1.dll',
    'BINARY')],
  [],
  [],
  [('base_library.zip',
    'C:\\Users\\Dan '
-   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\build\\kid_herding\\base_library.zip',
+   'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\build\\kid_herding\\base_library.zip',
    'DATA')],
  [])

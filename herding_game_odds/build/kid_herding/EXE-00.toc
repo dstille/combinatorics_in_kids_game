@@ -1,10 +1,10 @@
 ('C:\\Users\\Dan '
- 'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\dist\\kid_herding.exe',
- True,
+ 'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\dist\\kid_herding.exe',
+ False,
  False,
  False,
  'C:\\Users\\Dan '
- 'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\bootloader\\images\\icon-console.ico',
+ 'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\bootloader\\images\\icon-windowed.ico',
  None,
  False,
  False,
@@ -16,30 +16,30 @@
  None,
  None,
  'C:\\Users\\Dan '
- 'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\build\\kid_herding\\kid_herding.pkg',
+ 'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\build\\kid_herding\\kid_herding.pkg',
  [('PYZ-00.pyz',
    'C:\\Users\\Dan '
-   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\build\\kid_herding\\PYZ-00.pyz',
+   'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\build\\kid_herding\\PYZ-00.pyz',
    'PYZ'),
   ('struct',
    'C:\\Users\\Dan '
-   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\build\\kid_herding\\localpycs\\struct.pyc',
+   'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\build\\kid_herding\\localpycs\\struct.pyc',
    'PYMODULE'),
   ('pyimod01_archive',
    'C:\\Users\\Dan '
-   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\build\\kid_herding\\localpycs\\pyimod01_archive.pyc',
+   'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\build\\kid_herding\\localpycs\\pyimod01_archive.pyc',
    'PYMODULE'),
   ('pyimod02_importers',
    'C:\\Users\\Dan '
-   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\build\\kid_herding\\localpycs\\pyimod02_importers.pyc',
+   'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\build\\kid_herding\\localpycs\\pyimod02_importers.pyc',
    'PYMODULE'),
   ('pyimod03_ctypes',
    'C:\\Users\\Dan '
-   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\build\\kid_herding\\localpycs\\pyimod03_ctypes.pyc',
+   'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\build\\kid_herding\\localpycs\\pyimod03_ctypes.pyc',
    'PYMODULE'),
   ('pyimod04_pywin32',
    'C:\\Users\\Dan '
-   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\build\\kid_herding\\localpycs\\pyimod04_pywin32.pyc',
+   'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\build\\kid_herding\\localpycs\\pyimod04_pywin32.pyc',
    'PYMODULE'),
   ('pyiboot01_bootstrap',
    'C:\\Users\\Dan '
@@ -51,7 +51,7 @@
    'PYSOURCE'),
   ('kid_herding',
    'C:\\Users\\Dan '
-   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\kid_herding.py',
+   'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\kid_herding.py',
    'PYSOURCE'),
   ('python310.dll',
    'C:\\Users\\Dan '
@@ -93,23 +93,23 @@
    'C:\\Users\\Dan '
    'Castille\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\_decimal.pyd',
    'EXTENSION'),
-  ('libssl-1_1.dll',
-   'C:\\Users\\Dan '
-   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\libssl-1_1.dll',
-   'BINARY'),
   ('libcrypto-1_1.dll',
    'C:\\Users\\Dan '
    'Castille\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\libcrypto-1_1.dll',
    'BINARY'),
+  ('libssl-1_1.dll',
+   'C:\\Users\\Dan '
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\libssl-1_1.dll',
+   'BINARY'),
   ('base_library.zip',
    'C:\\Users\\Dan '
-   'Castille\\Documents\\GitHub\\math_misc\\python_math_misc\\herding_game_odds\\build\\kid_herding\\base_library.zip',
+   'Castille\\Documents\\GitHub\\math_misc\\combinatorics_in_kids_game\\herding_game_odds\\build\\kid_herding\\base_library.zip',
    'DATA')],
  [],
  False,
  False,
- 1684290548,
- [('run.exe',
+ 1684446683,
+ [('runw.exe',
    'C:\\Users\\Dan '
-   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\run.exe',
+   'Castille\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\runw.exe',
    'EXECUTABLE')])

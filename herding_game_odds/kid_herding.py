@@ -96,7 +96,7 @@ def herd(aplayers, kplayers):
 def play(aplayers, kplayers, who_to_check_odds_for):
     displays.display_players(aplayers, kplayers, who_to_check_odds_for)
     csets, asets, ksets = herd(aplayers, kplayers)
-    guess = get_number_input(f'\n{XSTR.PODDS1} {XSTR.AND.join(who_to_check_odds_for)} {XSTR.PODDS2}')
+    guess = get_number_input(f'\n{XSTR.PODDS}' % XSTR.AND.join(who_to_check_odds_for))
     results = check_guess(guess, csets, who_to_check_odds_for)
     aqueried_sets = get_subset_matches(asets, aplayers.queried_players)
     kqueried_sets = get_subset_matches(ksets, kplayers.queried_players)
@@ -106,8 +106,7 @@ def play(aplayers, kplayers, who_to_check_odds_for):
 def game():
     ask_user = False #get_user_option(XSTR.PUSER_OPTIONS)
     aplayers, kplayers, who_to_check_odds_for  = set_up_players(*get_selections_from_user() if ask_user else get_random())
-    asets, ksets = play(aplayers, kplayers, who_to_check_odds_for)
-    displays.display_math(asets, ksets, aplayers, kplayers)
+    play(aplayers, kplayers, who_to_check_odds_for)
     game() if get_user_option(XSTR.CONTINUE) else None
 
 if __name__ == '__main__':

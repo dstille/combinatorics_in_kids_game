@@ -11,6 +11,9 @@ Bear can pick off and herd a certain number of Adults and a certain number of Ki
 Your job is to figure out the odds of a Cousin or set of Cousins getting herded.
 Not all Cousins may participate.
 """
+COUSINS = ['Leon', 'Jade', 'Sawyer', 'Mia', 'Anya', 'Sebastian', 'Morgan', 'Briana', 'Bailey', 'Bryelle']
+ADULTS = COUSINS[5:]
+KIDS = COUSINS[:5]
 
 AND = ' and '
 NUM_ERROR = 'Not a number. Please try again'

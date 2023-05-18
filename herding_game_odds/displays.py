@@ -20,8 +20,8 @@ def format_results(odds, prob, msg, csets, queried_sets, asets, ksets, aqueried_
     l3 = f'\nadult sets:               {asets.combo_value}\n{asets}'
     l4 = f'\nqueried kids subsets:     {aplayers.remaining_sets.combo_value}\n{kqueried_sets}'
     l5 = f'\nkid sets:                 {ksets.combo_value}\n{ksets}'
-    l6 = f'\ncombined sets:\n{csets}'
-    l7 = f'\n{XSTR.HERDED}:\n{queried_sets}'
+    l6 = f'\n{XSTR.HERDED}:\n{queried_sets}'
+    l7 = f'\ncombined sets:\n{csets}'
     return '\n'.join([l1, l2, l3, l4, l5, l6, l7])
 
 def display_results(odds, prob, msg, csets, queried_sets, asets, ksets, aqueried_sets, kqueried_sets, aplayers, kplayers):

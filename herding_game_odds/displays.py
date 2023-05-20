@@ -9,19 +9,19 @@ def startup():
 
 def display_players(aplayers, bplayers, odds_check_names):
     print(BORDER)
-    print(f'\n{XSTR.DADULTS_CAN_HERD} {aplayers.num_herded} {XSTR.DADULTS_TO_PLAY}:\n      {XSTR.AND.join(aplayers.players)}')
-    print(f'{XSTR.DKIDS_CAN_HERD} {bplayers.num_herded} {XSTR.DKIDS_TO_PLAY}:\n      {XSTR.AND.join(bplayers.players)}')
-    print(f'{XSTR.DCHECK_ODDS}' % XSTR.AND.join(odds_check_names))
+    print(f'\n{XSTR.DISPLAY_APLAYERS_NUM_CHOSEN} {aplayers.num_herded} {XSTR.DISPLAY_APLAYERS}:\n      {XSTR.AND.join(aplayers.players)}')
+    print(f'{XSTR.DISPLAY_BPLAYERS_NUM_CHOSEN} {bplayers.num_herded} {XSTR.DISPLAY_BPLAYERS}:\n      {XSTR.AND.join(bplayers.players)}')
+    print(f'{XSTR.DISPLAY_PLAYERS_TO_CHECK_ODDS_FOR}' % XSTR.AND.join(odds_check_names))
     print(BORDER)
 
 def format_results(odds, prob, msg, allcombos, queried_sets, acombos, bcombos, aqueried_combos, bqueried_combos, aplayers, bplayers):
     l1 = f'{msg}\n{XSTR.RESULTS_ODDS} {odds}, {XSTR.RESULTS_PROB} {prob}'
-    l2 = f'\n{XSTR.DQADULTS_SETS}{aplayers.remaining_sets.combo_value}\n{aqueried_combos}'
-    l3 = f'\n{XSTR.DADULTS_SETS}{acombos.combo_value}\n{acombos}'
-    l4 = f'\n{XSTR.DQKIDS_SETS}{bplayers.remaining_sets.combo_value}\n{bqueried_combos}'
-    l5 = f'\n{XSTR.DKIDS_SETS}{bcombos.combo_value}\n{bcombos}'
-    l6 = f'\n{XSTR.DQCOMBINED_SETS}\n{queried_sets}'
-    l7 = f'\n{XSTR.DCOMINED_SETS}\n{allcombos}'
+    l2 = f'\n{XSTR.DISPLAY_QUERIED_ASETS}{aplayers.remaining_sets.combo_value} =   {aplayers.remaining_sets.combo_value.as_factorials()}  =  {aplayers.remaining_sets.combo_value.value}   {CV.as_formula()}\n{aqueried_combos}'
+    l3 = f'\n{XSTR.DISPLAY_ASETS}{acombos.combo_value} =   {acombos.combo_value.as_factorials()}  =  {acombos.combo_value.value}\n{acombos}'
+    l4 = f'\n{XSTR.DISPLAY_QUERIED_BSETS}{bplayers.remaining_sets.combo_value} =   {bplayers.remaining_sets.combo_value.as_factorials()}  =  {bplayers.remaining_sets.combo_value.value}\n{bqueried_combos}'
+    l5 = f'\n{XSTR.DISPLAY_BSETS}{bcombos.combo_value} =   {bcombos.combo_value.as_factorials()}  =  {bcombos.combo_value.value}\n{bcombos}'
+    l6 = f'\n{XSTR.DISPLAY_QUERIED_COMBINED_SETS}\n{queried_sets}'
+    l7 = f'\n{XSTR.DISPLAY_COMINED_SETS}\n{allcombos}'
     return '\n'.join([l1, l2, l3, l4, l5, l6, l7])
 
 def prob_display(combos, players):
@@ -36,4 +36,4 @@ def format_math(acombos, bcombos, aplayers, bplayers):
 
 def display_results(odds, prob, msg, allcombos, queried_sets, acombos, bcombos, aqueried_combos, bqueried_combos, aplayers, bplayers):
     print(format_results(odds, prob, msg, allcombos, queried_sets, acombos, bcombos, aqueried_combos, bqueried_combos, aplayers, bplayers))
-    print(format_math(acombos, bcombos, aplayers, bplayers))
+    print('\n\n' + format_math(acombos, bcombos, aplayers, bplayers))

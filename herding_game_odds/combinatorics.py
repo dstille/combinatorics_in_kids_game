@@ -96,11 +96,20 @@ class ComboValue:
     def C(self, n, k):
         return self.factorial(n) // (self.factorial(n-k)*self.factorial(k))
     
+    def as_factorials(self):
+        return f'{self.n}! / {self.n -self.k}!{self.k}!'
+    
+    @staticmethod
+    def as_formula():
+        return 'C(n,k) = n! / (n-k)!k!'
+    
     def __truediv__(self, obj):
         return self.value / obj.value if type(obj) == ComboValue else self.value / obj
     
     def __str__(self) -> str:
         return f'C({self.n},{self.k})'
+    
+
     
 class Prob:
     def __init__(self, subsize, supersize) -> None:
@@ -122,3 +131,17 @@ class Prob:
 
     def __str__(self) -> str:
         return f'{self.value:.2f}'
+    
+class Factorial:
+    def __init__(self, n) -> None:
+        self.n = n
+        self.value = self.factorial(self.n)
+
+    def factorial(self, n):
+        return n * self.factorial(n-1) if n>1 else 1
+
+    def __str__(self) -> str:
+        return '*'.join(str(n) for n in range(self.n, 0, -1))
+    
+cv = ComboValue(5,2)
+print(cv)

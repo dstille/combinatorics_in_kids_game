@@ -2,7 +2,8 @@ from players import Players
 import random
 import strings as XSTR
 import displays
-from combinatorics import Combinations, Odds, Prob, Combinatorics
+from combinatorics import Prob, Odds, Combinatorics
+from combinations import Combinations
 
 CLOSE_ENOUGH = 0.12
 BORDER = ''.join(['=' for __ in range(120)])
@@ -75,7 +76,7 @@ def check_guess(guess, allcombos, queried):
     queried_sets = allcombos.elems_in_sets(queried)
     return odds, prob, msg, allcombos, queried_sets
     
-def play(aplayers, bplayers):
+def get_sets(aplayers, bplayers):
     acombos = Combinations(aplayers.players, aplayers.num_chosen)
     bcombos = Combinations(bplayers.players, bplayers.num_chosen)
     allsets = Combinations.add_sets(acombos.sets, bcombos.sets)
@@ -84,11 +85,10 @@ def play(aplayers, bplayers):
 
 def game(aplayers, bplayers, check_odds_names):
     displays.display_players(aplayers, bplayers, check_odds_names)
-    allcombos, acombos, bcombos = play(aplayers, bplayers)
+    allcombos, acombos, bcombos = get_sets(aplayers, bplayers)
     guess = get_number_input(f'\n{XSTR.PROMPT_ODDS}' % XSTR.AND.join(check_odds_names))
     results = check_guess(guess, allcombos, check_odds_names)
     aqueried_sets = get_subset_matches(acombos, aplayers.queried_players)
-    print('aqueried sets:', aqueried_sets)
     bqueried_sets = get_subset_matches(bcombos, bplayers.queried_players)
     displays.display_results(*results, acombos, bcombos, aqueried_sets, bqueried_sets, aplayers, bplayers)
 

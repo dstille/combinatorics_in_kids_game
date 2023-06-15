@@ -1,5 +1,5 @@
 import strings as XSTR
-from combinatorics import ComboValue as CV
+from combinations import ComboValue as CV
 from players import Players
 
 BORDER = ''.join(['=' for __ in range(120)])

@@ -1,11 +1,10 @@
 from combinatorics import Combinatorics
 
 class Combinations(Combinatorics):
-    def __init__(self, elems, k):
-        sets = self.choose(elems, k)
-        self.elements = elems
-        super().__init__(sets, self.elements)
-        self.combo_value = ComboValue(len(self.elements), k)
+    def __init__(self, elements, k):
+        sets = self.choose(elements, k)
+        super().__init__(sets, elements)
+        self.combo_value = ComboValue(len(elements), k)
 
     def pascal(self, x, row = [1], n = 1):
         return [row] + self.pascal(x, [1 if k == 0 or n == k else row[k-1] + row[k] for k in range(n+1)], n+1) if n < x else [row]

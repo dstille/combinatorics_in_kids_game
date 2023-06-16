@@ -9,8 +9,8 @@ def save(contents, fname):
     with open(fname, 'w', encoding='utf-8') as f:
         f.write(contents)
 
-def insert(text, logname):
-    params = text.split(',')
+def insert(line, logname):
+    params = line.split(',')
     msg_args = ', '.join(['{'+ p.strip()+ '=' + '}' for p in params if p.strip() != 'self'])
     return logname + '.debug(f"PARAMETERS IN: ' + msg_args+'")'
 

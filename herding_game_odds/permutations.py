@@ -2,7 +2,6 @@ from combinatorics import Sets, Combinatorics, SetRepr
 
 class Permutations(Combinatorics):
     def __init__(self, elements, k):
-        self.elements = elements
         self.k = k
         self.permutations = self.permute(elements, k)
         super().__init__(self.permutations, elements)

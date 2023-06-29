@@ -2,7 +2,9 @@ from permutations import Permutations, PermValue
 
 def frame_build_step(vals, groups):
     permuted, remaining = next(vals)
-    return f'permuted = {permuted}, remaining = {remaining}  number permuted = {permuted.size}, number yet to permute = {groups.k-permuted.size}'
+    num_permuted, num_remaining = permuted.size, groups.k-permuted.size
+    out = f'permuted = {permuted}, remaining = {remaining}  number permuted = {num_permuted}, number yet to permute = {num_remaining}'
+    return out + '  +1' if num_remaining == 0 else out
 
 def display_builds(groups):
     build = groups.get_build_as_dict()

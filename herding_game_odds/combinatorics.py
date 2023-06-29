@@ -1,6 +1,7 @@
 class Sets:
     def __init__(self, sets) -> None:
         self.sets = sets
+        self.size = len(sets)
         self.sets_representations = [repr(SetRepr(set)) for set in self.sets]
 
     @classmethod

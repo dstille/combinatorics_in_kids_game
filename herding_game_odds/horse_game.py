@@ -1,7 +1,8 @@
 from permutations import Permutations, PermValue
 import horse_displays
 
-story1 = 'from %s, %s are going to play a game of horse. How many different shooting orders can we come up with?'
+story1 = 'From %s, %s are going to play a game of horse. How many different shooting orders can we come up with?'
+story2 = 'This time %s is going to play too.  How many different shooting orders can we come up with? \nHint: how many different spots can %s be added to the existing lineups?'
 players = ['Leon', 'Jade', 'Sawyer', 'Mia', "Anya"]
 
 def get_number_input(prompt):
@@ -29,6 +30,8 @@ def display(groups):
     horse_displays.display_math(groups)
     
 if __name__ == '__main__':
-    playing = players[:4]
-    print(story1 % (' and '.join(playing), 4))
-    setup(playing, 4)
+    playing = players[:3]
+    print(story1 % (' and '.join(playing), 3))
+    setup(playing, 3)
+    print(story2 % (players[3], players[3]))
+    setup(players[:4], 4)

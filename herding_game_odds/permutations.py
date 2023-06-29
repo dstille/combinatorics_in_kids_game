@@ -64,11 +64,11 @@ class PermValue:
         return self.factorial(self.n) // self.factorial(self.k)
     
     def as_factorials(self):
-        return f'{self.n}! / {self.n}-{self.k}!'
+        return f'{self.n}! / ({self.n}-{self.k})!'
     
     def as_expanded_factorial(self):
         numerator = '*'.join([str(i) for i in range(self.n, 0, -1)])
-        denominator = '*'.join([str(i) for i in range(self.n - self.k, 0, -1)])
+        denominator = '*'.join([str(i) for i in range(self.n - self.k, 0, 1)]) + '1'
         return f'{numerator} / {denominator}'
 
     

@@ -1,9 +1,9 @@
 from permutations import Permutations, PermValue
+from sequence import Sequences
 import horse_displays
 
-story1 = 'From %s, %s are going to play a game of horse. How many different shooting orders can we come up with?'
-story2 = 'This time %s is going to play too.  How many different shooting orders can we come up with? \nHint: how many different spots can %s be added to the existing lineups?'
-players = ['Leon', 'Jade', 'Sawyer', 'Mia', "Anya"]
+allplayers = ['Leon', 'Jade', 'Sawyer', 'Mia', "Anya"]
+shots = ['hook',  'half court shot', 'layup']
 
 def get_number_input(prompt):
     while True:
@@ -17,7 +17,7 @@ def check_guess(guess, answer):
 
 def play(groups):
     guess = get_number_input('Enter a number: ')
-    result = check_guess(guess, len(groups.permutations))
+    result = check_guess(guess, groups.size)
     print(result)
     display(groups)
 
@@ -28,10 +28,35 @@ def setup(players, k):
 
 def display(groups):
     horse_displays.display_math(groups)
-    
+
+def game1():
+    groups = Sequences(shots, 2)
+    horse_displays.scenario1(shots)
+    play(groups)
+
+def game2():
+    groups = Sequences(shots, 3)
+    horse_displays.scenario2(shots)
+    play(groups)
+
+def game3():
+    players = allplayers[:3]
+    horse_displays.scenario3(players)
+    setup(players, 3)
+       
+def game4():
+    players = allplayers[:4]
+    horse_displays.scenario4(players)
+    setup(players, 4)
+
+def game5():
+    players = allplayers[:4]
+    horse_displays.scenario5(players)
+    setup(players, 2)
+
 if __name__ == '__main__':
-    playing = players[:3]
-    print(story1 % (' and '.join(playing), 3))
-    setup(playing, 3)
-    print(story2 % (players[3], players[3]))
-    setup(players[:4], 4)
+    #game1()
+    #game2()
+    game3()
+    game4()
+    game5()

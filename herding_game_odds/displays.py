@@ -1,6 +1,5 @@
 import strings as XSTR
 from combinations import ComboValue as CV
-from players import Players
 
 BORDER = ''.join(['=' for __ in range(120)])
 
@@ -16,6 +15,8 @@ def display_players(aplayers, bplayers, odds_check_names):
     print(BORDER)
 
 def size_explanantion(combos, players):
+    return XSTR.SIZE_EXPLANATION % (combos.combo_value, players.num_queried, players.queried_set, players.nonqueried_set, players.num_chosen-players.num_queried)
+
     return f'we start with {combos.combo_value} and so far we haven chosen {players.num_queried}, {players.queried_set};\nfrom {players.nonqueried_set} we need to choose the remaining {players.num_chosen-players.num_queried}'
 
 def prob_display(combos, players):

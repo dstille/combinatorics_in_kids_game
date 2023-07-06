@@ -4,6 +4,7 @@ class Permutations(Combinatorics):
     def __init__(self, elements, k):
         self.k = k
         self.permutations = self.permute(elements, k)
+        self.size = len(self.permutations)
         super().__init__(self.permutations, elements)
         self.as_iter = iter(self.permute_r(elements, k))
 
@@ -68,7 +69,7 @@ class PermValue:
     
     def as_expanded_factorial(self):
         numerator = '*'.join([str(i) for i in range(self.n, 0, -1)])
-        denominator = '*'.join([str(i) for i in range(self.n - self.k, 0, 1)]) + '1'
+        denominator = '*'.join([str(i) for i in range(self.n - self.k, 1, -1)] + ['1'])
         return f'{numerator} / {denominator}'
 
     

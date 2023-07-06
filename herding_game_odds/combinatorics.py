@@ -37,6 +37,9 @@ class Combinatorics(Sets):
             lists = down_1d(lists) 
         return lists
     
+    def factorial(self, n):
+        return self.factorial(n-1) * n if n > 1 else 1
+    
 class Odds(Combinatorics):
     def __init__(self, event, sets) -> None:
         self.omega = sets

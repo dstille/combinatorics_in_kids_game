@@ -46,10 +46,10 @@ def set_up_players(targets, num_herded, check_odds_names):
     return Players(targets, num_herded, check_odds_names), check_odds_names
 
 def get_random():
-    num_targets = random.randint(1, len(XSTR.PETS)-1)
+    num_targets = random.randint(1, len(XSTR.PETS)-4)
     targets = get_random_selection(XSTR.PETS, num_targets)
     num_chosen = random.randint(1, num_targets)
-    check_odds_names = get_random_selection(targets, random.randint(1, num_chosen))
+    check_odds_names = get_random_selection(targets, random.randint(1, num_chosen-1))
     return targets, num_chosen, check_odds_names
 
 def check_guess(guess, combos, queried):
@@ -69,6 +69,9 @@ def get_sets(players):
 def game(players, check_odds_names):
     pet_herding_displays.display_players(players, check_odds_names)
     combos = get_sets(players)
+    print(f'{players.num_chosen=}, {len(check_odds_names)=}')
+    if players.num_chosen - len(check_odds_names) > 0 and get_user_option('would you like a hint? '):
+        pet_herding_displays.hint(combos, players, check_odds_names)
     guess = get_number_input(f'\n{XSTR.PROMPT_ODDS}' % XSTR.AND.join(check_odds_names))
     results = check_guess(guess, combos, check_odds_names)
     queried_sets = get_subset_matches(combos, players.queried_players)

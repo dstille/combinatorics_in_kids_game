@@ -13,6 +13,9 @@ def display_players(players, odds_check_names):
     print(f'{XSTR.PDISPLAY_PLAYERS_TO_CHECK_ODDS_FOR}' % XSTR.AND.join(odds_check_names))
     print(BORDER)
 
+def hint(combos, players, check_odds_names):
+    print(XSTR.SIZE_HINT % (players.num_chosen-players.num_queried, players.nonqueried_set, players.queried_players))  
+
 def size_explanantion(combos, players):
     return XSTR.SIZE_EXPLANATION % (combos.combo_value, players.num_queried, players.queried_set, players.nonqueried_set, players.num_chosen-players.num_queried)
 
@@ -31,7 +34,7 @@ def format_results(odds, prob, msg, combos, queried_sets, queried_combos, player
 
 def format_math(combos, players):
     a1, a2, a3, a4, a5 = prob_display(combos, players)
-    return f' {a1} = {a2} = {a3}  = {a4}/{a5} = {a4/a5:.2f}'
+    return f' {a1} = {a2} = {a3}'
 
 def display_results(odds, prob, msg, combos, queried_sets, queried_combos, players):
     print(format_results(odds, prob, msg, combos, queried_sets, queried_combos, players))

@@ -52,6 +52,10 @@ class PermBuild(Permutations):
         for ky, vals in d.items():
             d[ky] = ((SetRepr(v), SetRepr(self.difference(v, self.elements))) for v in vals)
 
+    @staticmethod
+    def capitalize_repeats(s1, s2):
+        return s1, s2.upper() if set(s1) == set(s2) else s1, s2
+
 class PermValue:
     def __init__(self, n, k) -> None:
          self.n = n

@@ -23,7 +23,7 @@ ALLPLAYERS = ['Leon', 'Jade', 'Sawyer', 'Mia', 'Anya', 'Sebastian', 'Morgan', 'B
 APLAYERS = ALLPLAYERS[5:]
 BPLAYERS = ALLPLAYERS[:5]
 
-PETS = ['Bentley', 'Cassie', 'Winnie', 'Aunt Sarah\'s cat', 'Sophie']
+PETS = ['Bentley', 'Cassie', 'Winnie', 'Luna', 'Obie', 'Mocha', 'Bella', 'Milton', 'Willow', 'Rex']
 
 AND = ' and '
 NUM_ERROR = 'Not a number. Please try again'
@@ -46,6 +46,7 @@ DISPLAY_BPLAYERS = 'and the kid targets are'
 DISPLAY_PLAYERS_TO_CHECK_ODDS_FOR = 'We are going to check the odds that %s get herded by Bear\n'
 
 SIZE_EXPLANATION = 'we start with %s and so far we haven chosen %s, %s;\nfrom %s we need to choose the remaining %s'
+SIZE_HINT = 'if we can choose %s from %s, how many sets can we make by combining with %s'
 DISPLAY_QUERIED_ASETS= 'queried adults subsets:   '
 DISPLAY_ASETS = 'adult sets:               '
 DISPLAY_QUERIED_BSETS = 'queried kids subsets:     '

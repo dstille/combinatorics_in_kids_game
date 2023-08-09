@@ -4,6 +4,11 @@ import strings as XSTR
 import pet_herding_displays
 from combinatorics import Prob, Odds, Combinatorics
 from combinations import Combinations
+import numpy as np
+
+import matplotlib.pyplot as plt
+
+x = np.random.normal(0.5,.1,10) 
 
 CLOSE_ENOUGH = 0.12
 BORDER = ''.join(['=' for __ in range(120)])
@@ -46,11 +51,14 @@ def set_up_players(targets, num_herded, check_odds_names):
     return Players(targets, num_herded, check_odds_names), check_odds_names
 
 def get_random():
-    num_targets = random.randint(1, len(XSTR.PETS)-4)
+    num_targets = get_weighted_randint(1, len(XSTR.PETS))
     targets = get_random_selection(XSTR.PETS, num_targets)
-    num_chosen = random.randint(1, num_targets)
-    check_odds_names = get_random_selection(targets, random.randint(1, num_chosen-1))
+    num_chosen = get_weighted_randint(1, num_targets)
+    check_odds_names = get_random_selection(targets, get_weighted_randint(1, num_chosen))
     return targets, num_chosen, check_odds_names
+
+def get_weighted_randint(min, max):
+    return int(min + np.random.normal(min+(max-min)/2,1))
 
 def check_guess(guess, combos, queried):
     odds = Odds(queried, combos.sets)
@@ -70,6 +78,7 @@ def game(players, check_odds_names):
     pet_herding_displays.display_players(players, check_odds_names)
     combos = get_sets(players)
     print(f'{players.num_chosen=}, {len(check_odds_names)=}')
+    #pet_herding_displays.offer_hint(players, check_odds_names)
     if players.num_chosen - len(check_odds_names) > 0 and get_user_option('would you like a hint? '):
         pet_herding_displays.hint(combos, players, check_odds_names)
     guess = get_number_input(f'\n{XSTR.PROMPT_ODDS}' % XSTR.AND.join(check_odds_names))

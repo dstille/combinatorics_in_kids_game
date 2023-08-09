@@ -24,7 +24,6 @@ def scenario5(players):
 
 def frame_build_step(vals, groups):
     permuted, remaining = next(vals)
-    print(remaining)
     rem_display = f'remaining = {remaining},' if str(remaining) == '{}' else f'remaining = {remaining},  '
     num_permuted, num_remaining = permuted.size, groups.k-permuted.size
     out = f'permuted = {permuted}, {rem_display}number permuted = {num_permuted}, number yet to permute = {num_remaining}'

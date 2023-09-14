@@ -9,6 +9,6 @@ pet_herding.py uses a game about my nephew's Australian Shepherd herding up fell
 
 kid_herding.py takes that game to a new level by using two sets of herding targets: the Adult Cousins and the Kid Cousins.
 
-Games can be run also in Spanish and Portuguese (why not get them to practice their too) by changing 'import strings' to 'import es_strings' or 'import pr_strings' respectively. Those import statements should be towards of the top of any game file.
+Games can be run also in Spanish and Portuguese (why not get them to practice there too) by changing 'import strings' to 'import es_strings' or 'import pr_strings' respectively. Those import statements should be towards the top of any game file.
 
 More information coming

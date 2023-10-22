@@ -1,6 +1,6 @@
 from players import Players
 import random
-import strings as XSTR
+import es_strings as XSTR
 import displays
 from combinatorics import Prob, Odds, Combinatorics
 from combinations import Combinations

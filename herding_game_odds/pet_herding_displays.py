@@ -2,7 +2,7 @@ import strings as XSTR
 from combinations import ComboValue as CV
 from combinatorics import SetRepr
 
-BORDER = ''.join(['=' for __ in range(120)])
+BORDER = 120*'='
 
 def startup():
     print(BORDER)

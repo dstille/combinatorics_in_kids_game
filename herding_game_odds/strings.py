@@ -1,4 +1,4 @@
-STORY = """
+STORY = '''
 It turns out that Bear, Leon and Jade's dog, is a herding dog. 
 That means that his breed has developed skills to herd animals like sheep.
 Bear is excited to see how good of a herder he is and is going to try out his skills out on the Cousins.
@@ -10,15 +10,15 @@ Bear can pick off and herd a certain number of Adults and a certain number of Ki
 
 Your job is to figure out the odds of a Cousin or set of Cousins getting herded.
 Not all Cousins may participate.
-"""
-STORY2 = """
+'''
+STORY2 = '''
 It's a Stille Family Reunion at Uncle Pete's house and a reunion for the Stille Family Pets as well.
 It turns out that Bear, Leon and Jade's dog, is a herding dog. 
 That means that his breed has developed skills to herd animals like sheep.
 We're counting on Bear to round up his pet cousins for family photos
   and your job is to guess the odds that a given set of Family Pets gets herded
 Bear is excited to see how good of a herder he is and is going to try out his skills out on:\n  %s.
-"""
+'''
 ALLPLAYERS = ['Leon', 'Jade', 'Sawyer', 'Mia', 'Anya', 'Sebastian', 'Morgan', 'Briana', 'Bailey', 'Bryelle']
 APLAYERS = ALLPLAYERS[5:]
 BPLAYERS = ALLPLAYERS[:5]

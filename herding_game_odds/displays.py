@@ -1,4 +1,4 @@
-import strings as XSTR
+import es_strings as XSTR
 from combinations import ComboValue as CV
 
 BORDER = ''.join(['=' for __ in range(120)])

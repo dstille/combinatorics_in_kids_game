@@ -1,5 +1,5 @@
 from permutations import Permutations, PermValue
-from combinatorics import SetRepr
+from combinatorics import Set
 
 story1 = 'Leon has a hook shot, a half court shot and a layup. If he can repeat shots, how many different shots can he make with 2 tries?'
 story2 = 'What about with 3 tries?'
@@ -14,13 +14,13 @@ def scenario2(shots):
     print(story2)
 
 def scenario3(players):
-    print(story3 % (SetRepr(players), 3))
+    print(story3 % (Set(players), 3))
 
 def scenario4(players):
     print(story4 % (players[3], players[3]))
 
 def scenario5(players):
-    print(story5 % (SetRepr(players), 2))
+    print(story5 % (Set(players), 2))
 
 def frame_build_step(vals, groups):
     permuted, remaining = next(vals)

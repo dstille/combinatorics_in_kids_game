@@ -1,22 +1,18 @@
-from players import Players
+from players import Players2
 import random
 import strings as XSTR
 import pet_herding_displays
-from combinatorics import Prob, Odds, Combinatorics
+from math_reprs import Prob, Odds
 from combinations import Combinations
 import numpy as np
 
-import matplotlib.pyplot as plt
-
-x = np.random.normal(0.5,.1,10) 
-
 CLOSE_ENOUGH = 0.12
-BORDER = ''.join(['=' for __ in range(120)])
+BORDER = '='*120
 
 def get_user_option(prompt):
     print(BORDER)
-    choice = input(prompt)      
-    return choice.strip().lower()[0] == XSTR.AFFIRM[0]
+    choice = input(prompt).strip().lower()[0]     
+    return choice == XSTR.AFFIRM[0] if choice in ['y', 'n'] else get_user_option(f'not an option\n{prompt}')
 
 def get_number_input(prompt):
     while True:
@@ -26,17 +22,10 @@ def get_number_input(prompt):
         except:
             print(XSTR.NUM_ERROR)
 
-def get_name_input(prompt, all_names):
-    while True:
-        names = input(prompt).split()
-        if set(names).issubset(set(all_names)):
-            return names
-        print(XSTR.STR_ERROR)
-
-def get_random_selection(players, num_players):
-    copy_players = players[::1]
-    random.shuffle(copy_players)  
-    return copy_players[:num_players]
+def get_random_selection(elements, num_elems):
+    copy = elements[::1]
+    random.shuffle(copy)  
+    return copy[:num_elems], copy[num_elems:]
 
 def get_subset_matches(sets, subset):
     return sets.elems_in_sets(subset)
@@ -47,48 +36,44 @@ def close_enough(val1, val2):
 def get_odds(subset, superset):
     return Odds(subset, superset)
 
-def set_up_players(targets, num_herded, check_odds_names):
-    return Players(targets, num_herded, check_odds_names), check_odds_names
+def set_up_player_combos(targets, num_herded, queried_names, nonqueried_names):
+    num_nonqueried = num_herded - len(queried_names)
+    return Players2(targets, num_herded), Players2(nonqueried_names, num_nonqueried)
 
 def get_random():
     num_targets = get_weighted_randint(1, len(XSTR.PETS))
-    targets = get_random_selection(XSTR.PETS, num_targets)
+    targets, __ = get_random_selection(XSTR.PETS, num_targets)
     num_chosen = get_weighted_randint(1, num_targets)
-    check_odds_names = get_random_selection(targets, get_weighted_randint(1, num_chosen))
-    return targets, num_chosen, check_odds_names
+    queried_names, nonqueried_names = get_random_selection(targets, get_weighted_randint(1, num_chosen))
+    return targets, num_chosen, queried_names, nonqueried_names
 
 def get_weighted_randint(min, max):
     return int(min + np.random.normal(min+(max-min)/2,1))
 
-def check_guess(guess, combos, queried):
-    odds = Odds(queried, combos.sets)
+def check_guess(guess, player_combos, queried_names):
+    odds = Odds(queried_names, player_combos.sets)
     prob = Prob(odds.counts, odds.sizesample)
     if odds == guess or prob == guess:
         msg = XSTR.PERFECT
     else:
         guess_prob = guess if type(guess) == float else 0.0 if guess[0] == 0 else Prob(*guess) 
         msg = f'\n{XSTR.CONGRATS}' if close_enough(prob, guess_prob) else f'\n{XSTR.TOO_BAD}'
-    queried_sets = combos.elems_in_sets(queried)
-    return odds, prob, msg, combos, queried_sets
-    
-def get_sets(players):
-    return Combinations(players.players, players.num_chosen)
+    queried_sets = player_combos.elems_in_sets(queried_names)
+    return odds, prob, msg, queried_sets
 
-def game(players, check_odds_names):
-    pet_herding_displays.display_players(players, check_odds_names)
-    combos = get_sets(players)
-    print(f'{players.num_chosen=}, {len(check_odds_names)=}')
-    #pet_herding_displays.offer_hint(players, check_odds_names)
-    if players.num_chosen - len(check_odds_names) > 0 and get_user_option('would you like a hint? '):
-        pet_herding_displays.hint(combos, players, check_odds_names)
-    guess = get_number_input(f'\n{XSTR.PROMPT_ODDS}' % XSTR.AND.join(check_odds_names))
-    results = check_guess(guess, combos, check_odds_names)
-    queried_sets = get_subset_matches(combos, players.queried_players)
-    pet_herding_displays.display_results(*results, combos, players)
+
+def game(player_combos, nonqueried_player_combos, queried_names):
+    pet_herding_displays.display_players(player_combos, queried_names)
+    if player_combos.num_chosen - len(queried_names) > 0 and get_user_option('would you like a hint? '):
+        pet_herding_displays.hint(player_combos, nonqueried_player_combos, queried_names)
+    guess = get_number_input(f'\n{XSTR.PROMPT_ODDS}' % XSTR.AND.join(queried_names))
+    results = check_guess(guess, player_combos, queried_names)
+    pet_herding_displays.display_results(*results, player_combos, nonqueried_player_combos)
 
 def start():
-    players, check_odds_names  = set_up_players(*get_random())
-    game(players, check_odds_names)
+    targets, num_chosen, queried_names, nonqueried_names = get_random()
+    player_combos, nonqueried_player_combos = set_up_player_combos(targets, num_chosen, queried_names, nonqueried_names)
+    game(player_combos, nonqueried_player_combos, queried_names)
     start() if get_user_option(XSTR.CONTINUE) else None
 
 if __name__ == '__main__':

@@ -1,9 +1,10 @@
 from players import Players
 import random
-import es_strings as XSTR
+import strings as XSTR
 import displays
-from combinatorics import Prob, Odds, Combinatorics
+from combinatorics import Combinatorics
 from combinations import Combinations
+from math_reprs import Odds, Prob
 
 CLOSE_ENOUGH = 0.12
 BORDER = ''.join(['=' for __ in range(120)])

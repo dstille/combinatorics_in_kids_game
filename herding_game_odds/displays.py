@@ -1,5 +1,6 @@
-import es_strings as XSTR
+import strings as XSTR
 from combinations import ComboValue as CV
+from math_reprs import Fraction
 
 BORDER = ''.join(['=' for __ in range(120)])
 

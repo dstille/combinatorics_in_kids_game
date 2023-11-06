@@ -1,4 +1,4 @@
-from combinatorics import Sets, Combinatorics, SetRepr
+from combinatorics import Sets, Combinatorics, Set
 
 class Permutations(Combinatorics):
     def __init__(self, elements, k):
@@ -6,10 +6,11 @@ class Permutations(Combinatorics):
         self.permutations = self.permute(elements, k)
         self.size = len(self.permutations)
         super().__init__(self.permutations, elements)
+        self.elements = elements
         self.as_iter = iter(self.permute_r(elements, k))
 
-    def permute_r(self, set_in, k, combos = []):
-        return [self.permute_r(self.remove_at_idx(set_in, idx), k-1, combos + [elem]) for idx, elem in enumerate(set_in)] if k>0 else combos
+    def permute_r(self, set_in, k, permutations = []):
+        return [self.permute_r(self.remove_at_idx(set_in, idx), k-1, permutations + [elem]) for idx, elem in enumerate(set_in)] if k>0 else permutations
 
     def remove_at_idx(self, list_in, idx):
         return list_in[:idx] if idx+1 >= len(list_in) else list_in[:idx] + list_in[idx+1:] 
@@ -50,7 +51,7 @@ class PermBuild(Permutations):
 
     def steps_as_generator(self, d: dict):
         for ky, vals in d.items():
-            d[ky] = ((SetRepr(v), SetRepr(self.difference(v, self.elements))) for v in vals)
+            d[ky] = ((Set(v), Set(self.difference(v, self.elements))) for v in vals)
 
     @staticmethod
     def capitalize_repeats(s1, s2):

@@ -5,7 +5,24 @@ class Fraction:
     def parseargs(self, args):
         if type(args[0]) == str:
             return args[0].split('/')
-        return (args[0].counts, args[0].sizesample) if type(args[0]) == Odds else args   
+        return (args[0].counts, args[0].sizesample) if type(args[0]) == Odds else args 
+
+    def reduce(self):
+        numer_factors = Factors(self.numer).elements
+        print(numer_factors)
+        denom_factors = Factors(self.denom).elements
+        print(denom_factors)
+        numer_copy = numer_factors[::1]
+        for f in numer_copy:
+            if f in denom_factors:
+                numer_factors.remove(f)
+                print(numer_factors)
+                denom_factors.remove(f)
+                print(denom_factors)
+        return Fraction(Product(numer_factors).value, Product(denom_factors).value)
+        
+    def __eq__(self, obj):
+        return self.numer == obj.numer and self.denom == obj.denom
 
     def __mul__(self, fract2):
         return f'{self} * {fract2} = {Fraction(self.numer * fract2.numer, self.denom * fract2.denom)}'
@@ -15,6 +32,35 @@ class Fraction:
     
     def __str__(self) -> str:
         return f'{self.numer} / {self.denom}'
+
+class Product:
+    def __init__(self, elements):
+        self.value = self.get_product(elements)
+
+    def get_product(self, elements):
+        return elements[0] * self.get_product(elements[1:]) if elements else 1  
+
+class Factors:
+    def __init__(self, number):
+        self.elements = self.get_prime_factors(number)
+
+    def get_prime_factors(self, number):
+        if self.is_prime(numbers):
+            return [1, number]
+        factors = []
+        for fac in range(2, int(num**.5)):
+            quot, rem = divmod()
+            if rem == 0:
+                while True:
+                    nquot, nrem = qu
+
+        
+
+    def is_prime(self, num):
+        for fac in range(2, int(num**.5)):
+            if num % fac == 0:
+                return False
+        return True                           
     
 
 class Odds:
@@ -75,3 +121,4 @@ class Factorial:
 
     def __str__(self) -> str:
         return '*'.join(str(n) for n in range(self.n, 0, -1))
+

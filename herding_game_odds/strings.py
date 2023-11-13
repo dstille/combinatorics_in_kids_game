@@ -23,7 +23,7 @@ ALLPLAYERS = ['Leon', 'Jade', 'Sawyer', 'Mia', 'Anya', 'Sebastian', 'Morgan', 'B
 APLAYERS = ALLPLAYERS[5:]
 BPLAYERS = ALLPLAYERS[:5]
 
-PETS = ['Bentley', 'Cassie', 'Winnie', 'Luna', 'Obie', 'Mocha', 'Bella', 'Milton', 'Willow', 'Rex']
+PETS = ['Bentley', 'Winnie', 'Luna', 'Obie', 'Mocha', 'Milton', 'Willow', 'Rex']
 
 AND = ' and '
 NUM_ERROR = 'Not a number. Please try again'

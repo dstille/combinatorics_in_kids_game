@@ -12,3 +12,5 @@ kid_herding.py takes that game to a new level by using two sets of herding targe
 Games can be run also in Spanish and Portuguese (why not get them to practice there too) by changing 'import strings' to 'import es_strings' or 'import pr_strings' respectively. Those import statements should be towards the top of any game file.
 
 More information coming
+
+Please delete this the following: Make sure you reword the readme stating that it is a open source project, and that you welcome feedback and collaboration as long as human decency is kept from all participants.

@@ -1,12 +1,12 @@
 # This is an Open Source Project
 I welcome collaboration and feedback. Please be considerate of all participating.
 
-# combinatorics_in_kids_game
+# combinatorics_in_kids_games
 I have a few games here to teach about permutations and combinations that live in the herding_game_odds folder.
 
 The games start with horse_game.py to teach about permutations through the number of lineups that can be made from the Cousins (my nieces and nephews).
 
-Then mini_lotto.py (which is incomplete) introduces the differences between permutations and combinations by asking how much more of a profit I can turn if I sell lotto tickets with repeated numbers versus unrepeated numbers.
+Then mini_lotto.py (under construction) introduces the differences between permutations and combinations by asking how much more of a profit I can turn if I sell lotto tickets with repeated numbers versus unrepeated numbers. Compare the steps used in generating permutations and combinations.
 
 pet_herding.py uses a game about my nephew's Australian Shepherd herding up fellow family pets to teach about combinations, sets and odds.
 

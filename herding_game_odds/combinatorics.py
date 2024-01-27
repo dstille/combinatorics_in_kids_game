@@ -17,7 +17,7 @@ class Sets(Set):
         self.sets = sets
         self.size = len(sets)
         self.elements = Set(elements)
-        self.elements = elements
+        #self.elements = elements
 
     @classmethod
     def add_sets(cls, set1, set2):

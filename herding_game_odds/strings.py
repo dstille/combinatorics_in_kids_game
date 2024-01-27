@@ -16,8 +16,9 @@ It's a Stille Family Reunion at Uncle Pete's house and a reunion for the Stille 
 It turns out that Bear, Leon and Jade's dog, is a herding dog. 
 That means that his breed has developed skills to herd animals like sheep.
 We're counting on Bear to round up his pet cousins for family photos
-  and your job is to guess the odds that a given set of Family Pets gets herded
-Bear is excited to see how good of a herder he is and is going to try out his skills out on:\n  %s.
+  and the pets over at Uncle Pete's house are \n  %s.
+Some of the pets are inside and some of the pets are outside.
+We are going to see if we can get Bear to round up a subset of the ones outside.  
 '''
 ALLPLAYERS = ['Leon', 'Jade', 'Sawyer', 'Mia', 'Anya', 'Sebastian', 'Morgan', 'Briana', 'Bailey', 'Bryelle']
 APLAYERS = ALLPLAYERS[5:]
@@ -55,8 +56,8 @@ DISPLAY_QUERIED_COMBINED_SETS = 'combined queried subsets:  '
 DISPLAY_COMINED_SETS = 'combined sets:'
 
 PDISPLAY_PLAYERS_NUM_CHOSEN = 'The number of pets who Bear can catch is'
-PDISPLAY_PLAYERS = 'and the targets are '
-PDISPLAY_PLAYERS_TO_CHECK_ODDS_FOR = 'We are going to check the odds that %s get herded by Bear'
+PDISPLAY_PLAYERS = 'and out in the yard are '
+PDISPLAY_PLAYERS_TO_CHECK_ODDS_FOR = 'Bear has seen a Wanted poster for %s with a Reward of 3 treats.\nWe are going to figure out the odds that Bear gets a reward.'
 
 PDISPLAY_QUERIED_SETS= 'queried subsets:   '
 PDISPLAY_SETS = 'sets of pets:      '

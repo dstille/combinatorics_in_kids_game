@@ -24,7 +24,7 @@ ALLPLAYERS = ['Leon', 'Jade', 'Sawyer', 'Mia', 'Anya', 'Sebastian', 'Morgan', 'B
 APLAYERS = ALLPLAYERS[5:]
 BPLAYERS = ALLPLAYERS[:5]
 
-PETS = ['Bentley', 'Winnie', 'Luna', 'Obie', 'Mocha', 'Milton', 'Willow', 'Rex']
+PETS = ['Bentley', 'Winnie', 'Luna', 'Obie', 'Mocha', 'Willow', 'Rex']
 
 AND = ' and '
 NUM_ERROR = 'Not a number. Please try again'
@@ -57,7 +57,7 @@ DISPLAY_COMINED_SETS = 'combined sets:'
 
 PDISPLAY_PLAYERS_NUM_CHOSEN = 'The number of pets who Bear can catch is'
 PDISPLAY_PLAYERS = 'and out in the yard are '
-PDISPLAY_PLAYERS_TO_CHECK_ODDS_FOR = 'Bear has seen a Wanted poster for %s with a Reward of 3 treats.\nWe are going to figure out the odds that Bear gets a reward.'
+PDISPLAY_PLAYERS_TO_CHECK_ODDS_FOR = 'Bear has seen a Wanted poster for %s with a Reward of a Milkbone.\nWe are going to figure out the odds that Bear gets that reward.'
 
 PDISPLAY_QUERIED_SETS= 'queried subsets:   '
 PDISPLAY_SETS = 'sets of pets:      '

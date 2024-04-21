@@ -63,3 +63,11 @@ def C(n, k):
 def p(event, size):
     return event/size
 
+# after much labor, it gets the dimensions right
+def choose_alt(elements, k, nth=0, set=[], combos=[]):
+    if nth == k:
+        combos.append(set)
+    else:      
+        for idx, elem in enumerate(elements):
+            choose_alt(elements[idx+1:], k, nth+1, set+[elem], combos)
+        return combos   
